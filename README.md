@@ -10,6 +10,7 @@ This repository is ready for GitHub continuous deployment to Netlify. It retriev
 - The workflow commits that one file to `main`.
 - Netlify detects the commit and publishes the refreshed dashboard.
 - If the source is unchanged, incomplete, stale or unavailable, no commit and no Netlify deployment occurs.
+- If APIMS is unreachable after all retries, the workflow finishes successfully with an **IPU refresh skipped** notice and preserves the last complete verified snapshot. Invalid, stale, incomplete or conflicting responses still fail the workflow.
 
 The separate Google Sheet history continues to be maintained by the existing automation. This repository intentionally contains no Google credentials.
 
@@ -46,7 +47,7 @@ Every subsequent data commit from the workflow will trigger Netlify continuous d
 1. Open the GitHub repository.
 2. Select **Actions → Refresh IPU dashboard**.
 3. Select **Run workflow**.
-4. Open the workflow log and confirm both `npm run refresh` and `npm test` pass.
+4. Open the workflow log and confirm both `npm run refresh` and `npm test` pass. If APIMS is temporarily unreachable, the run will show **IPU refresh skipped** in its summary and keep the previous verified dashboard data.
 5. If JAS has published a newer snapshot, GitHub will create a commit and Netlify will deploy it.
 
 If GitHub reports that workflow write access is restricted, open **Settings → Actions → General → Workflow permissions**, select **Read and write permissions**, and save. Organisation policy may require an administrator to change this.

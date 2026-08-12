@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { appendFile, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -7,12 +7,12 @@ const OUTPUT_FILE = path.join(PROJECT_ROOT, "public", "data", "latest.json");
 const TIME_ZONE = "Asia/Kuala_Lumpur";
 const MYT_OFFSET = "+08:00";
 const APIMS_PORTAL = "https://eqms.doe.gov.my/APIMS/main";
-const APIMS_API = "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly";
+const APIMS_API = process.env.APIMS_API_URL || "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly";
 const GOOGLE_SHEET = "https://docs.google.com/spreadsheets/d/1McGmQMW7SexQJvvWOwJd1JAe9PyADt5PsSCK43QgTtE/edit";
-const REQUEST_TIMEOUT_MS = 20_000;
-const FETCH_ATTEMPTS = 5;
-const SAMPLE_DELAY_MS = 1_500;
-const STATE_DELAY_MS = 2_000;
+const REQUEST_TIMEOUT_MS = Number(process.env.APIMS_REQUEST_TIMEOUT_MS || 20_000);
+const FETCH_ATTEMPTS = Number(process.env.APIMS_FETCH_ATTEMPTS || 5);
+const SAMPLE_DELAY_MS = Number(process.env.APIMS_SAMPLE_DELAY_MS || 1_500);
+const STATE_DELAY_MS = Number(process.env.APIMS_STATE_DELAY_MS || 2_000);
 
 const STATE_IDS = [5, 8, 10, 14];
 const EXPECTED_REGIONS = ["Selangor", "W.P. Kuala Lumpur", "Perak", "Negeri Sembilan"];
@@ -34,6 +34,13 @@ const STATIONS = [
   { stationId: "CA24N", region: "Negeri Sembilan", station: "Seremban" },
   { stationId: "CA25N", region: "Negeri Sembilan", station: "Port Dickson" }
 ];
+
+class ApimsUnavailableError extends Error {
+  constructor(message, options) {
+    super(message, options);
+    this.name = "ApimsUnavailableError";
+  }
+}
 
 function localParts(date = new Date()) {
   return Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
@@ -116,7 +123,10 @@ async function fetchJson(url, attempts = FETCH_ATTEMPTS) {
       clearTimeout(timer);
     }
   }
-  throw new Error(`Unable to retrieve ${url} after ${attempts} attempts: ${errorDetails(lastError)}`);
+  throw new ApimsUnavailableError(
+    `Unable to retrieve ${url} after ${attempts} attempts: ${errorDetails(lastError)}`,
+    { cause: lastError }
+  );
 }
 
 async function retrieveState(stateId, datetime) {
@@ -299,7 +309,41 @@ async function main() {
   console.log(`Saved ${currentRows.length} official station readings for ${snapshot.generatedAt}.`);
 }
 
-main().catch((error) => {
+async function cachedSnapshotIsUsable() {
+  try {
+    const cached = JSON.parse(await readFile(OUTPUT_FILE, "utf8"));
+    return cached?.status === "ready"
+      && Number.isFinite(Date.parse(cached.generatedAt))
+      && Array.isArray(cached.stationLatest)
+      && cached.stationLatest.length === STATIONS.length
+      && Array.isArray(cached.klTrend)
+      && cached.klTrend.length === 16;
+  } catch {
+    return false;
+  }
+}
+
+async function writeWorkflowSummary(message) {
+  if (!process.env.GITHUB_STEP_SUMMARY) return;
+  try {
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, `${message}\n`, "utf8");
+  } catch (error) {
+    console.warn(`Unable to write the GitHub job summary: ${errorDetails(error)}`);
+  }
+}
+
+main().catch(async (error) => {
+  if (error instanceof ApimsUnavailableError) {
+    const cachedIsUsable = await cachedSnapshotIsUsable();
+    if (cachedIsUsable) {
+      const message = "⚠️ JAS APIMS could not be reached after all retries. The last verified snapshot was preserved; no data file was changed and no Netlify deployment is required.";
+      console.warn(`${message}\n${error.message}`);
+      await writeWorkflowSummary(`## IPU refresh skipped\n\n${message}`);
+      process.exitCode = 0;
+      return;
+    }
+    console.error("JAS APIMS is unavailable and no complete verified cached snapshot exists. Refusing to publish.");
+  }
   console.error(error.stack || error.message || error);
   process.exitCode = 1;
 });
