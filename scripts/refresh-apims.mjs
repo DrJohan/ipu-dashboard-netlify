@@ -9,6 +9,10 @@ const MYT_OFFSET = "+08:00";
 const APIMS_PORTAL = "https://eqms.doe.gov.my/APIMS/main";
 const APIMS_API = "https://eqms.doe.gov.my/api3/publicportalapims/apitablehourly";
 const GOOGLE_SHEET = "https://docs.google.com/spreadsheets/d/1McGmQMW7SexQJvvWOwJd1JAe9PyADt5PsSCK43QgTtE/edit";
+const REQUEST_TIMEOUT_MS = 20_000;
+const FETCH_ATTEMPTS = 5;
+const SAMPLE_DELAY_MS = 1_500;
+const STATE_DELAY_MS = 2_000;
 
 const STATE_IDS = [5, 8, 10, 14];
 const EXPECTED_REGIONS = ["Selangor", "W.P. Kuala Lumpur", "Perak", "Negeri Sembilan"];
@@ -70,11 +74,24 @@ function validReading(row) {
   return row?.DATETIME && Number.isInteger(value) && value >= 0 && value <= 999;
 }
 
-async function fetchJson(url, attempts = 3) {
+function delay(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+function errorDetails(error) {
+  const message = error?.message || String(error);
+  const cause = error?.cause;
+  if (!cause) return message;
+  const causeMessage = cause.message || String(cause);
+  const code = cause.code ? ` (${cause.code})` : "";
+  return `${message}: ${causeMessage}${code}`;
+}
+
+async function fetchJson(url, attempts = FETCH_ATTEMPTS) {
   let lastError;
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 25_000);
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
     try {
       const response = await fetch(url, {
         headers: {
@@ -90,12 +107,16 @@ async function fetchJson(url, attempts = 3) {
       return await response.json();
     } catch (error) {
       lastError = error;
-      if (attempt < attempts) await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
+      if (attempt < attempts) {
+        const retryDelay = Math.min(12_000, 2_000 * (2 ** (attempt - 1)));
+        console.warn(`JAS request attempt ${attempt}/${attempts} failed: ${errorDetails(error)}. Retrying in ${retryDelay / 1_000}s.`);
+        await delay(retryDelay);
+      }
     } finally {
       clearTimeout(timer);
     }
   }
-  throw new Error(`Unable to retrieve ${url}: ${lastError?.message || lastError}`);
+  throw new Error(`Unable to retrieve ${url} after ${attempts} attempts: ${errorDetails(lastError)}`);
 }
 
 async function retrieveState(stateId, datetime) {
@@ -106,7 +127,11 @@ async function retrieveState(stateId, datetime) {
     url.searchParams.set("_sample", `${Date.now()}-${sampleNumber}`);
     return fetchJson(url);
   };
-  const payloads = await Promise.all([sample(1), sample(2)]);
+  // APIMS intermittently drops bursts of parallel requests. Keep the two
+  // verification samples independent, but request them sequentially.
+  const payloads = [await sample(1)];
+  await delay(SAMPLE_DELAY_MS);
+  payloads.push(await sample(2));
   const rows = payloads.flatMap((payload) => Array.isArray(payload?.api_table_hourly) ? payload.api_table_hourly : []);
   if (rows.length === 0) {
     throw new Error(`JAS APIMS returned no hourly rows for state ID ${stateId}.`);
@@ -154,7 +179,12 @@ function roundedAverage(values) {
 
 async function main() {
   const requestedHour = runHour();
-  const stateRows = (await Promise.all(STATE_IDS.map((stateId) => retrieveState(stateId, requestedHour)))).flat();
+  const stateRows = [];
+  for (const [index, stateId] of STATE_IDS.entries()) {
+    console.log(`Retrieving verified JAS readings for state ID ${stateId}...`);
+    stateRows.push(...await retrieveState(stateId, requestedHour));
+    if (index < STATE_IDS.length - 1) await delay(STATE_DELAY_MS);
+  }
 
   const currentRows = STATIONS.map((station) => {
     const source = latestReading(stateRows, station.stationId);
