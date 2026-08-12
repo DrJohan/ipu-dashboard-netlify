@@ -1,0 +1,14 @@
+{
+  "name": "klinik-inocare-ipu-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Netlify-ready Klinik Inocare dashboard for verified JAS APIMS snapshots.",
+  "scripts": {
+    "refresh": "node scripts/refresh-apims.mjs",
+    "test": "node scripts/validate-package.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
