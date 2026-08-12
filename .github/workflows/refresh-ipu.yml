@@ -1,0 +1,52 @@
+name: Refresh IPU dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 1,9,17 * * *"
+      timezone: "Asia/Kuala_Lumpur"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-ipu-dashboard
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out the production branch
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project metadata
+        run: npm ci
+
+      - name: Retrieve and validate the official JAS snapshot
+        run: npm run refresh
+
+      - name: Validate the dashboard package
+        run: npm test
+
+      - name: Commit only a genuinely changed snapshot
+        shell: bash
+        run: |
+          if git diff --quiet -- public/data/latest.json; then
+            echo "JAS APIMS snapshot is unchanged; no deployment is required."
+            exit 0
+          fi
+
+          git config user.name "IPU Dashboard Bot"
+          git config user.email "actions@github.com"
+          git add public/data/latest.json
+          git commit -m "Refresh JAS IPU snapshot"
+          git push

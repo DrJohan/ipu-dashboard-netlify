@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dashboard pemantauan Indeks Pencemar Udara Klinik Inocare untuk Kuala Lumpur, Selangor, Perak dan Negeri Sembilan.">
+    <meta name="theme-color" content="#234173">
+    <title>Dashboard IPU | Klinik Inocare</title>
+    <link rel="icon" href="./assets/inocare-symbol.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Langkau ke kandungan utama</a>
+
+    <header class="site-header">
+      <div class="page-shell header-inner">
+        <div class="brand-lockup">
+          <img
+            class="brand-logo"
+            src="./assets/klinik-inocare-horizontal-dark.png"
+            alt="Klinik Inocare"
+            width="650"
+            height="190"
+          >
+          <p class="brand-promise">Trusted Care. Inspired Innovation.</p>
+        </div>
+        <a class="source-link source-link-header" href="https://eqms.doe.gov.my/APIMS/main" target="_blank" rel="noreferrer">
+          <span class="ph-icon icon-cloud-arrow-down" aria-hidden="true"></span>
+          Sumber rasmi JAS APIMS
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="hero" aria-labelledby="dashboard-title">
+        <div>
+          <p class="eyebrow">Pemantauan operasi kualiti udara</p>
+          <h1 id="dashboard-title">Dashboard Indeks Pencemar Udara</h1>
+          <p class="hero-copy">Ringkasan bacaan IPU terkini untuk W.P. Kuala Lumpur, Selangor, Perak dan Negeri Sembilan.</p>
+        </div>
+        <div id="overall-status" class="overall-status" aria-live="polite">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Memuatkan bacaan rasmi…</span>
+        </div>
+      </section>
+
+      <section class="snapshot-strip" aria-label="Maklumat snapshot">
+        <div class="snapshot-item">
+          <span class="ph-icon icon-clock" aria-hidden="true"></span>
+          <div>
+            <span class="meta-label">Snapshot diterbitkan</span>
+            <strong id="snapshot-time">—</strong>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <span class="ph-icon icon-chart-line-up" aria-hidden="true"></span>
+          <div>
+            <span class="meta-label">Tetingkap trend aktif</span>
+            <strong id="trend-window">8 bacaan sejam terkini</strong>
+          </div>
+        </div>
+        <div class="snapshot-item">
+          <span class="ph-icon icon-map-trifold" aria-hidden="true"></span>
+          <div>
+            <span class="meta-label">Liputan stesen</span>
+            <strong id="coverage-count">—</strong>
+          </div>
+        </div>
+        <div class="snapshot-item snapshot-source">
+          <span class="ph-icon icon-database" aria-hidden="true"></span>
+          <div>
+            <span class="meta-label">Sumber data</span>
+            <a href="https://eqms.doe.gov.my/APIMS/main" target="_blank" rel="noreferrer">JAS APIMS rasmi ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" aria-labelledby="regional-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Status semasa</p>
+            <h2 id="regional-heading">Ringkasan mengikut negeri</h2>
+          </div>
+          <p>Nilai tertinggi, purata dan liputan bagi setiap wilayah dipantau.</p>
+        </div>
+        <div id="region-cards" class="region-grid" aria-live="polite"></div>
+      </section>
+
+      <section id="context-panel" class="context-panel" aria-labelledby="context-heading" aria-live="polite">
+        <div class="context-icon-wrap">
+          <span class="ph-icon icon-gauge" aria-hidden="true"></span>
+        </div>
+        <div class="context-copy">
+          <p class="eyebrow">Konteks pengurusan</p>
+          <h2 id="context-heading">Semakan operasi</h2>
+          <div id="context-content">
+            <p>Menilai bacaan terkini…</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block chart-card" aria-labelledby="trend-heading">
+        <div class="section-heading chart-heading">
+          <div>
+            <p class="eyebrow">Trend Kuala Lumpur</p>
+            <h2 id="trend-heading">Trend IPU 8 bacaan sejam terkini</h2>
+            <p class="chart-subtitle">Terhad kepada Batu Muda dan Cheras sehingga sejarah negeri lain sedia untuk carta.</p>
+          </div>
+          <span class="published-badge"><span class="status-dot" aria-hidden="true"></span> Snapshot diterbitkan</span>
+        </div>
+
+        <div class="filter-bar" aria-label="Penapis carta trend">
+          <label class="filter-field" for="state-filter">
+            <span>Negeri / Wilayah</span>
+            <span class="select-wrap">
+              <span class="ph-icon icon-map-trifold" aria-hidden="true"></span>
+              <select id="state-filter" name="state-filter">
+                <option value="W.P. Kuala Lumpur">W.P. Kuala Lumpur</option>
+              </select>
+            </span>
+          </label>
+          <label class="filter-field" for="station-filter">
+            <span>Stesen</span>
+            <span class="select-wrap">
+              <span class="ph-icon icon-compass" aria-hidden="true"></span>
+              <select id="station-filter" name="station-filter">
+                <option value="All">Semua stesen</option>
+                <option value="Batu Muda">Batu Muda</option>
+                <option value="Cheras">Cheras</option>
+              </select>
+            </span>
+          </label>
+        </div>
+
+        <div id="trend-summary" class="chart-summary" aria-live="polite"></div>
+        <div id="trend-chart" class="trend-chart" role="img" aria-label="Carta garis trend IPU Kuala Lumpur"></div>
+        <div id="trend-legend" class="chart-legend" aria-label="Petunjuk carta"></div>
+      </section>
+
+      <section class="section-block chart-card" aria-labelledby="ranking-heading">
+        <div class="section-heading chart-heading">
+          <div>
+            <p class="eyebrow">Perbandingan semua stesen</p>
+            <h2 id="ranking-heading">Kedudukan IPU semasa</h2>
+            <p class="chart-subtitle">Disusun daripada bacaan tertinggi. IPU melebihi 100 ditandakan merah dengan amaran teks.</p>
+          </div>
+          <span class="ph-icon icon-chart-bar section-icon" aria-hidden="true"></span>
+        </div>
+        <div class="scale-key" aria-label="Skala kategori IPU">
+          <span><i class="key-swatch good"></i> Baik 0–50</span>
+          <span><i class="key-swatch moderate"></i> Sederhana 51–100</span>
+          <span><i class="key-swatch unhealthy"></i> Tidak Sihat &gt;100</span>
+        </div>
+        <div id="station-bars" class="bar-chart" aria-live="polite"></div>
+      </section>
+
+      <section class="section-block table-card" aria-labelledby="detail-heading">
+        <div class="section-heading chart-heading">
+          <div>
+            <p class="eyebrow">Butiran stesen</p>
+            <h2 id="detail-heading">Senarai bacaan terkini</h2>
+            <p class="chart-subtitle">Pilih tajuk lajur untuk menyusun jadual.</p>
+          </div>
+          <span class="ph-icon icon-buildings section-icon" aria-hidden="true"></span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><button class="sort-button" data-sort="rank">Kedudukan <span aria-hidden="true">↕</span></button></th>
+                <th scope="col"><button class="sort-button" data-sort="region">Negeri / Wilayah <span aria-hidden="true">↕</span></button></th>
+                <th scope="col"><button class="sort-button" data-sort="station">Stesen <span aria-hidden="true">↕</span></button></th>
+                <th scope="col"><button class="sort-button" data-sort="ipu">IPU <span aria-hidden="true">↕</span></button></th>
+                <th scope="col"><button class="sort-button" data-sort="category">Kategori <span aria-hidden="true">↕</span></button></th>
+                <th scope="col"><button class="sort-button" data-sort="sourceTimestamp">Masa sumber <span aria-hidden="true">↕</span></button></th>
+              </tr>
+            </thead>
+            <tbody id="station-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="source-notes" aria-labelledby="notes-heading">
+        <div>
+          <p class="eyebrow">Tadbir urus data</p>
+          <h2 id="notes-heading">Sumber dan batasan</h2>
+        </div>
+        <div class="notes-grid">
+          <p><span class="ph-icon icon-database" aria-hidden="true"></span><span><strong>Sumber utama:</strong> Jadual bacaan sejam portal rasmi <a href="https://eqms.doe.gov.my/APIMS/main" target="_blank" rel="noreferrer">JAS APIMS ↗</a>. Masa sumber sebenar dipaparkan bagi setiap stesen.</span></p>
+          <p><span class="ph-icon icon-arrows-clockwise" aria-hidden="true"></span><span><strong>Kemas kini:</strong> Fail snapshot diterbitkan setiap lapan jam selepas semakan kelengkapan dan kesegaran data. Ia bukan sambungan langsung.</span></p>
+          <p><span class="ph-icon icon-chart-line-up" aria-hidden="true"></span><span><strong>Sejarah:</strong> <a href="https://docs.google.com/spreadsheets/d/1McGmQMW7SexQJvvWOwJd1JAe9PyADt5PsSCK43QgTtE/edit" target="_blank" rel="noreferrer">Lihat Google Sheet sejarah IPU ↗</a>.</span></p>
+          <p><span class="ph-icon icon-warning-circle" aria-hidden="true"></span><span><strong>Penggunaan:</strong> Supports operational monitoring; not medical advice. Sila rujuk nasihat rasmi kesihatan dan alam sekitar.</span></p>
+        </div>
+      </section>
+
+      <div id="dashboard-error" class="error-banner" role="alert" hidden>
+        <span class="ph-icon icon-warning-circle" aria-hidden="true"></span>
+        <div>
+          <strong>Data tidak dapat dipaparkan.</strong>
+          <p id="error-message">Cuba muat semula halaman ini sebentar lagi.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <div>
+          <strong>Klinik Inocare</strong>
+          <span>Trusted Care. Inspired Innovation.</span>
+        </div>
+        <p>Ikon oleh <a href="https://phosphoricons.com/" target="_blank" rel="noreferrer">Phosphor Icons</a> · Dashboard snapshot operasi</p>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="noscript-message">JavaScript diperlukan untuk memaparkan bacaan dan penapis dashboard.</div>
+    </noscript>
+  </body>
+</html>
