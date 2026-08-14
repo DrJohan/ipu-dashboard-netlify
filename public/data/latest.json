@@ -13,8 +13,13 @@
     "highestStation": "Cheras",
     "averageIpu": 97,
     "unhealthyStations": 3,
+<<<<<<< HEAD
     "monitoredStations": 17,
     "coveredRegions": 5
+=======
+    "monitoredStations": 16,
+    "coveredRegions": 4
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
   },
   "stateSummary": [
     {
@@ -34,6 +39,7 @@
       "averageIpu": 122,
       "stationCount": 2,
       "unhealthyStations": 1
+<<<<<<< HEAD
     },
     {
       "region": "W.P. Putrajaya",
@@ -43,6 +49,8 @@
       "averageIpu": 95,
       "stationCount": 1,
       "unhealthyStations": 0
+=======
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "region": "Perak",
@@ -92,24 +100,39 @@
       "rank": 3
     },
     {
+<<<<<<< HEAD
       "stationId": "CA17W",
       "region": "W.P. Putrajaya",
       "station": "Putrajaya",
       "ipu": 95,
+=======
+      "stationId": "CA11A",
+      "region": "Perak",
+      "station": "Jalan Tasek, Ipoh",
+      "ipu": 93,
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
       "rank": 4
     },
     {
+<<<<<<< HEAD
       "stationId": "CA11A",
       "region": "Perak",
       "station": "Jalan Tasek, Ipoh",
       "ipu": 93,
+=======
+      "stationId": "CA19B",
+      "region": "Selangor",
+      "station": "Petaling Jaya",
+      "ipu": 91,
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
       "rank": 5
     },
     {
+<<<<<<< HEAD
       "stationId": "CA19B",
       "region": "Selangor",
       "station": "Petaling Jaya",
@@ -146,13 +169,46 @@
       "rank": 9
     },
     {
+=======
+      "stationId": "CA15W",
+      "region": "W.P. Kuala Lumpur",
+      "station": "Batu Muda",
+      "ipu": 90,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+      "rank": 6
+    },
+    {
+      "stationId": "CA22B",
+      "region": "Selangor",
+      "station": "Banting",
+      "ipu": 89,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+      "rank": 7
+    },
+    {
+      "stationId": "CA21B",
+      "region": "Selangor",
+      "station": "Pelabuhan Klang",
+      "ipu": 89,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+      "rank": 8
+    },
+    {
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
       "stationId": "CA12A",
       "region": "Perak",
       "station": "S K Jalan Pegoh, Ipoh",
       "ipu": 89,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 10
+=======
+      "rank": 9
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "stationId": "CA14A",
@@ -161,7 +217,11 @@
       "ipu": 89,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 11
+=======
+      "rank": 10
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "stationId": "CA23N",
@@ -170,7 +230,11 @@
       "ipu": 87,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 12
+=======
+      "rank": 11
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "stationId": "CA13A",
@@ -179,7 +243,11 @@
       "ipu": 87,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 13
+=======
+      "rank": 12
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "stationId": "CA24N",
@@ -188,7 +256,11 @@
       "ipu": 84,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 14
+=======
+      "rank": 13
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
     },
     {
       "stationId": "CA10A",
@@ -197,12 +269,30 @@
       "ipu": 83,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+<<<<<<< HEAD
       "rank": 15
     },
     {
       "stationId": "CA18B",
       "region": "Selangor",
       "station": "Kuala Selangor",
+=======
+      "rank": 14
+    },
+    {
+      "stationId": "CA18B",
+      "region": "Selangor",
+      "station": "Kuala Selangor",
+      "ipu": 82,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-08-14T11:00:00+08:00",
+      "rank": 15
+    },
+    {
+      "stationId": "CA25N",
+      "region": "Negeri Sembilan",
+      "station": "Port Dickson",
+>>>>>>> a1fc94d491ffe8fdced874f44226afdafa410173
       "ipu": 82,
       "category": "Sederhana",
       "sourceTimestamp": "2026-08-14T11:00:00+08:00",
