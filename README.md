@@ -1,6 +1,6 @@
 # Klinik Inocare IPU Dashboard — Netlify package
 
-This repository is ready for GitHub continuous deployment to Netlify. It retrieves verified hourly readings directly from the official Jabatan Alam Sekitar (JAS) APIMS portal for W.P. Kuala Lumpur, Selangor, Perak and Negeri Sembilan.
+This repository is ready for GitHub continuous deployment to Netlify. It retrieves verified hourly readings directly from the official Jabatan Alam Sekitar (JAS) APIMS portal for W.P. Kuala Lumpur, W.P. Putrajaya, Selangor, Perak and Negeri Sembilan.
 
 ## What updates automatically
 
@@ -72,7 +72,7 @@ or serve the `public` directory with any static web server.
 
 ## Data safeguards
 
-- The monitored-station registry is explicit and limited to 16 reviewed stations.
+- The monitored-station registry is explicit and limited to 17 reviewed stations.
 - Every station keeps its actual JAS source timestamp.
 - A station can lag the latest published timestamp by up to two hours; a larger gap stops publication.
 - A source more than three hours behind the scheduled run stops publication.

@@ -8,6 +8,7 @@ const SERIES_COLORS = {
 const REGION_ICONS = {
   Selangor: "icon-buildings",
   "W.P. Kuala Lumpur": "icon-gauge",
+  "W.P. Putrajaya": "icon-map-trifold",
   Perak: "icon-tree",
   "Negeri Sembilan": "icon-compass"
 };
@@ -49,14 +50,18 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function correctMalayMonth(value) {
+  return value.replace(/\bOgo\b/g, "Ogos");
+}
+
 function formatDateTime(value) {
   const date = new Date(value);
-  return Number.isNaN(date.valueOf()) ? "—" : `${dateTimeFormatter.format(date)} MYT`;
+  return Number.isNaN(date.valueOf()) ? "—" : `${correctMalayMonth(dateTimeFormatter.format(date))} MYT`;
 }
 
 function formatShortTime(value) {
   const date = new Date(value);
-  return Number.isNaN(date.valueOf()) ? "—" : shortTimeFormatter.format(date);
+  return Number.isNaN(date.valueOf()) ? "—" : correctMalayMonth(shortTimeFormatter.format(date));
 }
 
 function toneFor(ipu) {
@@ -78,7 +83,7 @@ function categoryMarkup(category, ipu) {
 function validateData(data) {
   if (!data || data.status !== "ready") throw new Error("Snapshot data belum sedia.");
   if (!Array.isArray(data.stationLatest) || data.stationLatest.length === 0) throw new Error("Tiada bacaan stesen dalam snapshot.");
-  if (!Array.isArray(data.stateSummary) || data.stateSummary.length !== 4) throw new Error("Ringkasan negeri tidak lengkap.");
+  if (!Array.isArray(data.stateSummary) || data.stateSummary.length !== 5) throw new Error("Ringkasan negeri tidak lengkap.");
   if (!Array.isArray(data.klTrend)) throw new Error("Data trend Kuala Lumpur tidak tersedia.");
   return data;
 }

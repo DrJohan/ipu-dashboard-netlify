@@ -14,11 +14,12 @@ const FETCH_ATTEMPTS = Number(process.env.APIMS_FETCH_ATTEMPTS || 5);
 const SAMPLE_DELAY_MS = Number(process.env.APIMS_SAMPLE_DELAY_MS || 1_500);
 const STATE_DELAY_MS = Number(process.env.APIMS_STATE_DELAY_MS || 2_000);
 
-const STATE_IDS = [5, 8, 10, 14];
-const EXPECTED_REGIONS = ["Selangor", "W.P. Kuala Lumpur", "Perak", "Negeri Sembilan"];
+const STATE_IDS = [5, 8, 10, 14, 16];
+const EXPECTED_REGIONS = ["Selangor", "W.P. Kuala Lumpur", "W.P. Putrajaya", "Perak", "Negeri Sembilan"];
 const STATIONS = [
   { stationId: "CA15W", region: "W.P. Kuala Lumpur", station: "Batu Muda" },
   { stationId: "CA16W", region: "W.P. Kuala Lumpur", station: "Cheras" },
+  { stationId: "CA17W", region: "W.P. Putrajaya", station: "Putrajaya" },
   { stationId: "CA18B", region: "Selangor", station: "Kuala Selangor" },
   { stationId: "CA19B", region: "Selangor", station: "Petaling Jaya" },
   { stationId: "CA20B", region: "Selangor", station: "Shah Alam" },
