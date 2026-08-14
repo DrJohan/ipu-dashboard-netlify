@@ -4,7 +4,7 @@ This repository publishes the Klinik Inocare IPU dashboard through GitHub Pages.
 
 ## What updates automatically
 
-- GitHub Actions runs at 01:15, 09:15 and 17:15 Asia/Kuala_Lumpur. The 15-minute offset gives the official hourly table time to settle.
+- GitHub Actions runs every three hours at 15 minutes past the hour in Asia/Kuala_Lumpur. The 15-minute offset gives the official hourly table time to settle.
 - `scripts/refresh-apims.mjs` retrieves and validates the official APIMS hourly tables.
 - Only a genuinely changed snapshot updates `public/data/latest.json`.
 - The workflow commits that one file to `main`.
@@ -70,7 +70,7 @@ To preview locally, serve the `public` directory with any static web server.
 - A station timestamp can never move backwards from the already published snapshot.
 - Missing readings are never converted to zero.
 - IPU above 100 is always displayed in Klinik Inocare Error Red `#C62828`, with a warning icon and `Tidak Sihat` label.
-- The Kuala Lumpur chart contains exactly eight verified readings each for Batu Muda and Cheras.
+- The trend dataset contains exactly eight verified hourly readings for every monitored station, displayed one region at a time.
 
 ## Important files
 
@@ -79,7 +79,7 @@ To preview locally, serve the `public` directory with any static web server.
 - `public/app.js` — filters, native SVG line chart, bar chart and sortable table.
 - `public/data/latest.json` — current published snapshot.
 - `scripts/refresh-apims.mjs` — official source retrieval and validation.
-- `.github/workflows/refresh-ipu.yml` — eight-hour schedule.
+- `.github/workflows/refresh-ipu.yml` — three-hour schedule.
 - `.github/workflows/deploy-pages.yml` — GitHub Pages deployment.
 - `netlify.toml` — retained only for compatibility with the previous Netlify setup.
 
