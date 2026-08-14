@@ -15,12 +15,13 @@ function expectedCategory(ipu) {
   return "Berbahaya";
 }
 
-const [rawData, html, css, app, workflow, netlify, approvedLogo] = await Promise.all([
+const [rawData, html, css, app, refreshWorkflow, pagesWorkflow, netlify, approvedLogo] = await Promise.all([
   read("public/data/latest.json"),
   read("public/index.html"),
   read("public/styles.css"),
   read("public/app.js"),
   read(".github/workflows/refresh-ipu.yml"),
+  read(".github/workflows/deploy-pages.yml"),
   read("netlify.toml"),
   readFile(path.join(ROOT, "public/assets/klinik-inocare-horizontal-dark.png"))
 ]);
@@ -66,7 +67,13 @@ for (const color of ["#234173", "#538AC3", "#F7F9FC", "#1E293B", "#64748B", "#C6
 if (!app.includes('ipu > 100 ? "#C62828"')) fail("Unhealthy station bars must use Error Red.");
 if (!app.includes('<span class="alert-label">Tidak Sihat</span>')) fail("Unhealthy station bars must include an explicit warning label.");
 if (!app.includes('replace(/\\bOgo\\b/g, "Ogos")')) fail("The Malay month name Ogos must not be abbreviated as Ogo.");
-if (!workflow.includes('timezone: "Asia/Kuala_Lumpur"')) fail("Workflow timezone is not Asia/Kuala_Lumpur.");
+if (!refreshWorkflow.includes('timezone: "Asia/Kuala_Lumpur"')) fail("Workflow timezone is not Asia/Kuala_Lumpur.");
+for (const workflow of [refreshWorkflow, pagesWorkflow]) {
+  if (!workflow.includes("actions/configure-pages@v5")) fail("GitHub Pages configuration is missing.");
+  if (!workflow.includes("actions/upload-pages-artifact@v4")) fail("GitHub Pages artifact upload is missing.");
+  if (!workflow.includes("path: public")) fail("GitHub Pages must publish the public directory.");
+  if (!workflow.includes("actions/deploy-pages@v4")) fail("GitHub Pages deployment is missing.");
+}
 if (!netlify.includes('publish = "public"')) fail("Netlify publish directory is not configured.");
 if (createHash("sha256").update(approvedLogo).digest("hex") !== "3b12876e993c8da5120199bb1164a42ecc21bd540da3e0d01ef29824de7540c0") fail("The approved Klinik Inocare logo has been altered.");
 

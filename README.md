@@ -1,6 +1,6 @@
-# Klinik Inocare IPU Dashboard — Netlify package
+# Klinik Inocare IPU Dashboard — GitHub Pages
 
-This repository is ready for GitHub continuous deployment to Netlify. It retrieves verified hourly readings directly from the official Jabatan Alam Sekitar (JAS) APIMS portal for W.P. Kuala Lumpur, W.P. Putrajaya, Selangor, Perak and Negeri Sembilan.
+This repository publishes the Klinik Inocare IPU dashboard through GitHub Pages. It retrieves verified hourly readings directly from the official Jabatan Alam Sekitar (JAS) APIMS portal for W.P. Kuala Lumpur, W.P. Putrajaya, Selangor, Perak and Negeri Sembilan.
 
 ## What updates automatically
 
@@ -8,39 +8,35 @@ This repository is ready for GitHub continuous deployment to Netlify. It retriev
 - `scripts/refresh-apims.mjs` retrieves and validates the official APIMS hourly tables.
 - Only a genuinely changed snapshot updates `public/data/latest.json`.
 - The workflow commits that one file to `main`.
-- Netlify detects the commit and publishes the refreshed dashboard.
-- If the source is unchanged, incomplete, stale or unavailable, no commit and no Netlify deployment occurs.
+- GitHub Pages publishes the dashboard whenever `main` changes.
+- If the source is unchanged, incomplete, stale or unavailable, no data commit or unnecessary deployment occurs.
 - If APIMS is unreachable after all retries, the workflow finishes successfully with an **IPU refresh skipped** notice and preserves the last complete verified snapshot. Invalid, stale, incomplete or conflicting responses still fail the workflow.
 
 The separate Google Sheet history continues to be maintained by the existing automation. This repository intentionally contains no Google credentials.
 
-## 1. Upload this package to GitHub
+## 1. Enable GitHub Pages
 
-Create an empty GitHub repository and upload **the contents of this folder**, preserving hidden folders such as `.github`.
+1. Open the GitHub repository.
+2. Select **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Merge or push the dashboard files to `main`.
+5. Open **Actions → Deploy dashboard to GitHub Pages** to follow the first deployment.
 
-The root of the repository must contain:
+The deployment workflow publishes only the contents of `public`, so `index.html` is placed at the root of the Pages artifact.
+
+## 2. Automatic deployment
+
+The root of the repository contains:
 
 ```text
 .github/
-netlify.toml
 package.json
 package-lock.json
 public/
 scripts/
 ```
 
-Do not upload only the `public` folder and do not place this package inside another nested folder.
-
-## 2. Connect the repository to Netlify
-
-1. In Netlify, select **Add new project → Import an existing project**.
-2. Select GitHub and authorise the repository.
-3. Choose this repository.
-4. Set the production branch to `main`.
-5. Netlify reads `netlify.toml`; confirm the publish directory is `public` and there is no build command.
-6. Select **Deploy**.
-
-Every subsequent data commit from the workflow will trigger Netlify continuous deployment automatically.
+Every change to `main`, including a verified data refresh, triggers `.github/workflows/deploy-pages.yml` and updates the live site.
 
 ## 3. Test the refresh once
 
@@ -48,7 +44,7 @@ Every subsequent data commit from the workflow will trigger Netlify continuous d
 2. Select **Actions → Refresh IPU dashboard**.
 3. Select **Run workflow**.
 4. Open the workflow log and confirm both `npm run refresh` and `npm test` pass. If APIMS is temporarily unreachable, the run will show **IPU refresh skipped** in its summary and keep the previous verified dashboard data.
-5. If JAS has published a newer snapshot, GitHub will create a commit and Netlify will deploy it.
+5. If JAS has published a newer snapshot, GitHub will create a commit and GitHub Pages will deploy it.
 
 If GitHub reports that workflow write access is restricted, open **Settings → Actions → General → Workflow permissions**, select **Read and write permissions**, and save. Organisation policy may require an administrator to change this.
 
@@ -62,13 +58,7 @@ npm run refresh
 npm test
 ```
 
-To preview the static files locally:
-
-```bash
-npx netlify dev
-```
-
-or serve the `public` directory with any static web server.
+To preview locally, serve the `public` directory with any static web server.
 
 ## Data safeguards
 
@@ -90,7 +80,8 @@ or serve the `public` directory with any static web server.
 - `public/data/latest.json` — current published snapshot.
 - `scripts/refresh-apims.mjs` — official source retrieval and validation.
 - `.github/workflows/refresh-ipu.yml` — eight-hour schedule.
-- `netlify.toml` — Netlify publishing and cache rules.
+- `.github/workflows/deploy-pages.yml` — GitHub Pages deployment.
+- `netlify.toml` — retained only for compatibility with the previous Netlify setup.
 
 ## Source and limitations
 
