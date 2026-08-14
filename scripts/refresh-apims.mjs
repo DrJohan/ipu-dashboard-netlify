@@ -13,6 +13,7 @@ const REQUEST_TIMEOUT_MS = Number(process.env.APIMS_REQUEST_TIMEOUT_MS || 20_000
 const FETCH_ATTEMPTS = Number(process.env.APIMS_FETCH_ATTEMPTS || 5);
 const SAMPLE_DELAY_MS = Number(process.env.APIMS_SAMPLE_DELAY_MS || 1_500);
 const STATE_DELAY_MS = Number(process.env.APIMS_STATE_DELAY_MS || 2_000);
+const TREND_POINT_COUNT = 8;
 
 const STATE_IDS = [5, 8, 10, 14, 16];
 const EXPECTED_REGIONS = ["Selangor", "W.P. Kuala Lumpur", "W.P. Putrajaya", "Perak", "Negeri Sembilan"];
@@ -166,13 +167,13 @@ function latestReading(rows, stationId) {
     .sort((left, right) => timestampMs(right.DATETIME) - timestampMs(left.DATETIME))[0];
 }
 
-function latestEight(rows, station) {
+function latestTrend(rows, station) {
   const stationRows = new Map(rows
     .filter((row) => row.STATION_ID === station.stationId && validReading(row))
     .map((row) => [row.DATETIME, row]));
   const points = [...stationRows.values()]
     .sort((left, right) => timestampMs(left.DATETIME) - timestampMs(right.DATETIME))
-    .slice(-8)
+    .slice(-TREND_POINT_COUNT)
     .map((row) => ({
       timestamp: isoMyt(row.DATETIME),
       station: station.station,
@@ -180,7 +181,9 @@ function latestEight(rows, station) {
       ipu: Number(row.API),
       category: categoryFor(Number(row.API))
     }));
-  if (points.length !== 8) throw new Error(`${station.station} has only ${points.length} valid hourly points; expected 8.`);
+  if (points.length !== TREND_POINT_COUNT) {
+    throw new Error(`${station.station} has only ${points.length} valid hourly points; expected ${TREND_POINT_COUNT}.`);
+  }
   return points;
 }
 
@@ -244,12 +247,11 @@ async function main() {
     };
   });
 
-  const klStations = STATIONS.filter((station) => station.region === "W.P. Kuala Lumpur");
-  const trend = klStations.flatMap((station) => latestEight(stateRows, station))
+  const stationTrend = STATIONS.flatMap((station) => latestTrend(stateRows, station))
     .sort((left, right) => Date.parse(left.timestamp) - Date.parse(right.timestamp) || left.station.localeCompare(right.station));
 
   const snapshot = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     status: "ready",
     generatedAt: newestSourceTimestamp,
     source: {
@@ -268,9 +270,9 @@ async function main() {
     },
     stateSummary,
     stationLatest: currentRows,
-    klTrend: trend,
+    stationTrend,
     meta: {
-      trendLimit: "Latest 8 verified hourly points per Kuala Lumpur station",
+      trendLimit: `Latest ${TREND_POINT_COUNT} verified hourly points per monitored station`,
       monitoredRegions: EXPECTED_REGIONS,
       categories: [
         { minimum: 0, maximum: 50, label: "Baik" },
@@ -314,11 +316,12 @@ async function cachedSnapshotIsUsable() {
   try {
     const cached = JSON.parse(await readFile(OUTPUT_FILE, "utf8"));
     return cached?.status === "ready"
+      && cached.schemaVersion === 2
       && Number.isFinite(Date.parse(cached.generatedAt))
       && Array.isArray(cached.stationLatest)
       && cached.stationLatest.length === STATIONS.length
-      && Array.isArray(cached.klTrend)
-      && cached.klTrend.length === 16;
+      && Array.isArray(cached.stationTrend)
+      && cached.stationTrend.length === STATIONS.length * TREND_POINT_COUNT;
   } catch {
     return false;
   }

@@ -1,9 +1,6 @@
 "use strict";
 
-const SERIES_COLORS = {
-  "Batu Muda": "#234173",
-  Cheras: "#538AC3"
-};
+const SERIES_PALETTE = ["#234173", "#538AC3", "#2E7D32", "#9C5B24", "#7557A8", "#168A9C"];
 
 const REGION_ICONS = {
   Selangor: "icon-buildings",
@@ -34,6 +31,7 @@ const shortTimeFormatter = new Intl.DateTimeFormat("ms-MY", {
 
 const state = {
   data: null,
+  region: "W.P. Kuala Lumpur",
   station: "All",
   sortKey: "rank",
   sortDirection: "asc"
@@ -82,9 +80,10 @@ function categoryMarkup(category, ipu) {
 
 function validateData(data) {
   if (!data || data.status !== "ready") throw new Error("Snapshot data belum sedia.");
+  if (data.schemaVersion !== 2) throw new Error("Versi data trend tidak disokong.");
   if (!Array.isArray(data.stationLatest) || data.stationLatest.length === 0) throw new Error("Tiada bacaan stesen dalam snapshot.");
   if (!Array.isArray(data.stateSummary) || data.stateSummary.length !== 5) throw new Error("Ringkasan negeri tidak lengkap.");
-  if (!Array.isArray(data.klTrend)) throw new Error("Data trend Kuala Lumpur tidak tersedia.");
+  if (!Array.isArray(data.stationTrend) || data.stationTrend.length === 0) throw new Error("Data trend stesen tidak tersedia.");
   return data;
 }
 
@@ -147,17 +146,53 @@ function renderContext(data) {
     <p class="context-disclaimer">Dashboard ini menyokong operational monitoring dan bukan medical advice.</p>`;
 }
 
+function stationNamesForRegion(region) {
+  return [...new Set(state.data.stationTrend
+    .filter((row) => row.region === region)
+    .map((row) => row.station))]
+    .sort((left, right) => left.localeCompare(right, "ms", { sensitivity: "base" }));
+}
+
+function renderStationFilter() {
+  const stationSelect = byId("station-filter");
+  const stationNames = stationNamesForRegion(state.region);
+  if (state.station !== "All" && !stationNames.includes(state.station)) state.station = "All";
+  stationSelect.innerHTML = [
+    '<option value="All">Semua stesen</option>',
+    ...stationNames.map((station) => `<option value="${escapeHtml(station)}">${escapeHtml(station)}</option>`)
+  ].join("");
+  stationSelect.value = state.station;
+}
+
+function renderTrendFilters(data) {
+  const availableRegions = data.stateSummary
+    .map((row) => row.region)
+    .filter((region) => data.stationTrend.some((row) => row.region === region));
+  if (!availableRegions.includes(state.region)) state.region = availableRegions[0];
+  byId("state-filter").innerHTML = availableRegions
+    .map((region) => `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`)
+    .join("");
+  byId("state-filter").value = state.region;
+  renderStationFilter();
+}
+
 function trendRows() {
-  if (state.station === "All") return state.data.klTrend;
-  return state.data.klTrend.filter((row) => row.station === state.station);
+  const regionRows = state.data.stationTrend.filter((row) => row.region === state.region);
+  if (state.station === "All") return regionRows;
+  return regionRows.filter((row) => row.station === state.station);
+}
+
+function seriesColor(station, stations) {
+  return SERIES_PALETTE[Math.max(0, stations.indexOf(station)) % SERIES_PALETTE.length];
 }
 
 function renderTrendSummary(rows) {
   const stations = [...new Set(rows.map((row) => row.station))];
+  const regionStations = stationNamesForRegion(state.region);
   byId("trend-summary").innerHTML = stations.map((station) => {
     const points = rows.filter((row) => row.station === station).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
     const latest = points.at(-1);
-    return `<span class="summary-chip"><i style="--series-color:${SERIES_COLORS[station]}"></i>${escapeHtml(station)}: IPU ${latest?.ipu ?? "—"}</span>`;
+    return `<span class="summary-chip"><i style="--series-color:${seriesColor(station, regionStations)}"></i>${escapeHtml(station)}: IPU ${latest?.ipu ?? "—"}</span>`;
   }).join("") + `<span>${rows.length} titik disahkan dipaparkan</span>`;
 }
 
@@ -170,6 +205,12 @@ function niceStep(maxValue) {
 
 function renderTrendChart() {
   const rows = trendRows();
+  if (rows.length === 0) {
+    byId("trend-summary").textContent = "Tiada data trend untuk pilihan ini.";
+    byId("trend-chart").innerHTML = "";
+    byId("trend-legend").innerHTML = "";
+    return;
+  }
   renderTrendSummary(rows);
 
   const width = 980;
@@ -186,6 +227,7 @@ function renderTrendChart() {
   const x = (timestamp) => margin.left + ((new Date(timestamp).valueOf() - minTime) / timeSpan) * plotWidth;
   const y = (ipu) => margin.top + plotHeight - (ipu / yMax) * plotHeight;
   const stationNames = [...new Set(rows.map((row) => row.station))];
+  const regionStations = stationNamesForRegion(state.region);
 
   const yTicks = [];
   for (let value = 0; value <= yMax; value += step) yTicks.push(value);
@@ -206,7 +248,7 @@ function renderTrendChart() {
 
   const series = stationNames.map((station) => {
     const stationRows = rows.filter((row) => row.station === station).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-    const color = SERIES_COLORS[station];
+    const color = seriesColor(station, regionStations);
     const points = stationRows.map((row) => `${x(row.timestamp)},${y(row.ipu)}`).join(" ");
     const circles = stationRows.map((row) => `
       <circle class="chart-point" style="--series-color:${color}" cx="${x(row.timestamp)}" cy="${y(row.ipu)}" r="5">
@@ -217,8 +259,8 @@ function renderTrendChart() {
 
   byId("trend-chart").innerHTML = `
     <svg viewBox="0 0 ${width} ${height}" aria-labelledby="trend-svg-title trend-svg-desc">
-      <title id="trend-svg-title">Trend IPU bagi ${escapeHtml(stationNames.join(" dan "))}</title>
-      <desc id="trend-svg-desc">Lapan bacaan sejam terkini bagi setiap stesen Kuala Lumpur yang dipilih. Garisan putus-putus menandakan ambang IPU 100.</desc>
+      <title id="trend-svg-title">Trend IPU ${escapeHtml(state.region)} bagi ${escapeHtml(stationNames.join(" dan "))}</title>
+      <desc id="trend-svg-desc">Lapan bacaan sejam terkini bagi setiap stesen yang dipilih dalam ${escapeHtml(state.region)}. Garisan putus-putus menandakan ambang IPU 100.</desc>
       ${horizontalGrid}
       ${threshold}
       ${series}
@@ -227,7 +269,7 @@ function renderTrendChart() {
     </svg>`;
 
   byId("trend-legend").innerHTML = stationNames.map((station) => `
-    <span class="legend-item"><i class="legend-swatch" style="--series-color:${SERIES_COLORS[station]}"></i>${escapeHtml(station)}</span>`).join("") +
+    <span class="legend-item"><i class="legend-swatch" style="--series-color:${seriesColor(station, regionStations)}"></i>${escapeHtml(station)}</span>`).join("") +
     `<span class="legend-item"><i class="legend-swatch" style="--series-color:#C62828"></i>Ambang Tidak Sihat</span>`;
 }
 
@@ -280,7 +322,12 @@ function renderTable() {
 }
 
 function installInteractions() {
-  byId("state-filter").addEventListener("change", () => renderTrendChart());
+  byId("state-filter").addEventListener("change", (event) => {
+    state.region = event.target.value;
+    state.station = "All";
+    renderStationFilter();
+    renderTrendChart();
+  });
   byId("station-filter").addEventListener("change", (event) => {
     state.station = event.target.value;
     renderTrendChart();
@@ -304,6 +351,7 @@ function renderDashboard(data) {
   renderHeader(data);
   renderRegionCards(data);
   renderContext(data);
+  renderTrendFilters(data);
   renderTrendChart();
   renderBars(data);
   renderTable();

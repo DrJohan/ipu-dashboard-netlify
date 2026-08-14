@@ -104,9 +104,9 @@
       <section class="section-block chart-card" aria-labelledby="trend-heading">
         <div class="section-heading chart-heading">
           <div>
-            <p class="eyebrow">Trend Kuala Lumpur</p>
+            <p class="eyebrow">Trend mengikut wilayah</p>
             <h2 id="trend-heading">Trend IPU 8 bacaan sejam terkini</h2>
-            <p class="chart-subtitle">Terhad kepada Batu Muda dan Cheras sehingga sejarah negeri lain sedia untuk carta.</p>
+            <p class="chart-subtitle">Pilih satu wilayah, kemudian paparkan semua stesen wilayah itu atau satu stesen tertentu.</p>
           </div>
           <span class="published-badge"><span class="status-dot" aria-hidden="true"></span> Snapshot diterbitkan</span>
         </div>
@@ -117,7 +117,7 @@
             <span class="select-wrap">
               <span class="ph-icon icon-map-trifold" aria-hidden="true"></span>
               <select id="state-filter" name="state-filter">
-                <option value="W.P. Kuala Lumpur">W.P. Kuala Lumpur</option>
+                <option value="">Memuatkan wilayah…</option>
               </select>
             </span>
           </label>
@@ -126,16 +126,14 @@
             <span class="select-wrap">
               <span class="ph-icon icon-compass" aria-hidden="true"></span>
               <select id="station-filter" name="station-filter">
-                <option value="All">Semua stesen</option>
-                <option value="Batu Muda">Batu Muda</option>
-                <option value="Cheras">Cheras</option>
+                <option value="">Memuatkan stesen…</option>
               </select>
             </span>
           </label>
         </div>
 
         <div id="trend-summary" class="chart-summary" aria-live="polite"></div>
-        <div id="trend-chart" class="trend-chart" role="img" aria-label="Carta garis trend IPU Kuala Lumpur"></div>
+        <div id="trend-chart" class="trend-chart" role="img" aria-label="Carta garis trend IPU mengikut wilayah dan stesen yang dipilih"></div>
         <div id="trend-legend" class="chart-legend" aria-label="Petunjuk carta"></div>
       </section>
 
