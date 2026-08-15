@@ -15,7 +15,7 @@ function expectedCategory(ipu) {
   return "Berbahaya";
 }
 
-const [rawData, html, css, app, refreshWorkflow, pagesWorkflow, netlify, approvedLogo] = await Promise.all([
+const [rawData, html, css, app, refreshWorkflow, pagesWorkflow, netlify, inocareLogo, cellmaxLogo] = await Promise.all([
   read("public/data/latest.json"),
   read("public/index.html"),
   read("public/styles.css"),
@@ -23,7 +23,8 @@ const [rawData, html, css, app, refreshWorkflow, pagesWorkflow, netlify, approve
   read(".github/workflows/refresh-ipu.yml"),
   read(".github/workflows/deploy-pages.yml"),
   read("netlify.toml"),
-  readFile(path.join(ROOT, "public/assets/klinik-inocare-horizontal-dark.png"))
+  readFile(path.join(ROOT, "public/assets/klinik-inocare-wound-care-logo.jpg")),
+  readFile(path.join(ROOT, "public/assets/cellmax-logo-source.png"))
 ]);
 const data = JSON.parse(rawData);
 
@@ -64,6 +65,8 @@ for (const summary of data.stateSummary) {
 
 const requiredHtml = ["Negeri / Wilayah", "Stesen", "operational monitoring", "medical advice", "Phosphor Icons"];
 for (const text of requiredHtml) if (!html.includes(text)) fail(`Missing required dashboard text: ${text}`);
+if (!html.includes("./assets/klinik-inocare-wound-care-logo.jpg")) fail("The supplied Klinik Inocare logo is not displayed.");
+if (!html.includes("./assets/cellmax-logo-source.png")) fail("The supplied Cellmax logo is not displayed.");
 if ((html.match(/<select\b/g) || []).length !== 2) fail("The line chart must have exactly two hosted filters.");
 if (!app.includes("renderTrendFilters(data)")) fail("Trend filters must be populated from snapshot data.");
 if (!app.includes("row.region === state.region")) fail("Trend rows must be restricted to one selected region.");
@@ -83,6 +86,7 @@ for (const workflow of [refreshWorkflow, pagesWorkflow]) {
   if (!workflow.includes("actions/deploy-pages@v4")) fail("GitHub Pages deployment is missing.");
 }
 if (!netlify.includes('publish = "public"')) fail("Netlify publish directory is not configured.");
-if (createHash("sha256").update(approvedLogo).digest("hex") !== "3b12876e993c8da5120199bb1164a42ecc21bd540da3e0d01ef29824de7540c0") fail("The approved Klinik Inocare logo has been altered.");
+if (createHash("sha256").update(inocareLogo).digest("hex") !== "5199fb0cb19e6db4088ec1b9cc454ff1548360d3312e221d7dfac80517a414c1") fail("The supplied Klinik Inocare logo has been altered.");
+if (createHash("sha256").update(cellmaxLogo).digest("hex") !== "146f15b92674c4d3828490f71c04bb4787a92f717bb59010db1fa9c2d233ecca") fail("The supplied Cellmax logo has been altered.");
 
 console.log(`Validated ${data.stationLatest.length} stations, five regions, two dynamic filters and eight trend points per station.`);
