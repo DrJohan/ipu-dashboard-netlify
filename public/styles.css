@@ -117,7 +117,7 @@ a:focus-visible {
 }
 
 .header-inner {
-  min-height: 112px;
+  min-height: 126px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -125,25 +125,32 @@ a:focus-visible {
 }
 
 .brand-lockup {
-  display: flex;
-  align-items: center;
-  gap: 22px;
+  min-width: 0;
 }
 
 .brand-logo {
-  width: 224px;
+  width: clamp(260px, 25vw, 318px);
+  max-width: 100%;
   height: auto;
   display: block;
 }
 
-.brand-promise {
-  margin: 0;
-  padding-left: 22px;
-  border-left: 1px solid var(--border);
-  color: var(--grey);
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.cellmax-lockup {
+  padding: 3px 22px 3px 0;
+  border-right: 1px solid var(--border);
+}
+
+.cellmax-logo {
+  width: clamp(158px, 15vw, 188px);
+  height: auto;
+  display: block;
 }
 
 .source-link {
@@ -1059,19 +1066,23 @@ tbody tr:hover {
     gap: 16px;
   }
 
-  .brand-lockup {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .brand-logo {
-    width: 205px;
+    width: min(300px, 100%);
   }
 
-  .brand-promise {
-    padding-left: 0;
-    border-left: 0;
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .cellmax-lockup {
+    padding-right: 14px;
+  }
+
+  .cellmax-logo {
+    width: 162px;
   }
 
   .source-link-header {
@@ -1145,6 +1156,16 @@ tbody tr:hover {
 }
 
 @media (max-width: 470px) {
+  .header-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cellmax-lockup {
+    padding: 0;
+    border-right: 0;
+  }
+
   .bar-row {
     grid-template-columns: minmax(0, 1fr) minmax(64px, 1.1fr) 50px;
     gap: 8px;
