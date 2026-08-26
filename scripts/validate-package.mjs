@@ -85,10 +85,10 @@ if (!refreshWorkflow.includes('cron: "15 */3 * * *"')) fail("Dashboard refresh m
 if (!refreshWorkflow.includes("NODE_EXTRA_CA_CERTS: certs/globalsign-rsa-ov-ssl-ca-2018.pem")) fail("The JAS TLS intermediate is not configured for the refresh job.");
 if (refreshScript.includes("process.exitCode = 0")) fail("An unavailable JAS source must not produce a successful workflow result.");
 for (const workflow of [refreshWorkflow, pagesWorkflow]) {
-  if (!workflow.includes("actions/configure-pages@v5")) fail("GitHub Pages configuration is missing.");
-  if (!workflow.includes("actions/upload-pages-artifact@v4")) fail("GitHub Pages artifact upload is missing.");
+  if (!workflow.includes("actions/configure-pages@v6")) fail("GitHub Pages configuration is missing or does not target Node.js 24.");
+  if (!workflow.includes("actions/upload-pages-artifact@v5")) fail("GitHub Pages artifact upload is missing or does not target Node.js 24.");
   if (!workflow.includes("path: public")) fail("GitHub Pages must publish the public directory.");
-  if (!workflow.includes("actions/deploy-pages@v4")) fail("GitHub Pages deployment is missing.");
+  if (!workflow.includes("actions/deploy-pages@v5")) fail("GitHub Pages deployment is missing or does not target Node.js 24.");
 }
 if (!netlify.includes('publish = "public"')) fail("Netlify publish directory is not configured.");
 if (jasCertificate.fingerprint256.replaceAll(":", "").toLowerCase() !== "b676ffa3179e8812093a1b5eafee876ae7a6aaf231078dad1bfb21cd2893764a") fail("The approved GlobalSign intermediate certificate has been altered.");
