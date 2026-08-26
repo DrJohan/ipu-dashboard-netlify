@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
+import { createHash, X509Certificate } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -15,18 +15,21 @@ function expectedCategory(ipu) {
   return "Berbahaya";
 }
 
-const [rawData, html, css, app, refreshWorkflow, pagesWorkflow, netlify, inocareLogo, cellmaxLogo] = await Promise.all([
+const [rawData, html, css, app, refreshScript, refreshWorkflow, pagesWorkflow, netlify, inocareLogo, cellmaxLogo, jasIntermediate] = await Promise.all([
   read("public/data/latest.json"),
   read("public/index.html"),
   read("public/styles.css"),
   read("public/app.js"),
+  read("scripts/refresh-apims.mjs"),
   read(".github/workflows/refresh-ipu.yml"),
   read(".github/workflows/deploy-pages.yml"),
   read("netlify.toml"),
   readFile(path.join(ROOT, "public/assets/klinik-inocare-wound-care-logo.jpg")),
-  readFile(path.join(ROOT, "public/assets/cellmax-logo-source.png"))
+  readFile(path.join(ROOT, "public/assets/cellmax-logo-source.png")),
+  readFile(path.join(ROOT, "certs/globalsign-rsa-ov-ssl-ca-2018.pem"))
 ]);
 const data = JSON.parse(rawData);
+const jasCertificate = new X509Certificate(jasIntermediate);
 
 if (data.schemaVersion !== 2) fail("Expected snapshot schema version 2.");
 if (data.status !== "ready") fail("Snapshot is not ready.");
@@ -79,6 +82,8 @@ if (!app.includes('<span class="alert-label">Tidak Sihat</span>')) fail("Unhealt
 if (!app.includes('replace(/\\bOgo\\b/g, "Ogos")')) fail("The Malay month name Ogos must not be abbreviated as Ogo.");
 if (!refreshWorkflow.includes('timezone: "Asia/Kuala_Lumpur"')) fail("Workflow timezone is not Asia/Kuala_Lumpur.");
 if (!refreshWorkflow.includes('cron: "15 */3 * * *"')) fail("Dashboard refresh must run every three hours.");
+if (!refreshWorkflow.includes("NODE_EXTRA_CA_CERTS: certs/globalsign-rsa-ov-ssl-ca-2018.pem")) fail("The JAS TLS intermediate is not configured for the refresh job.");
+if (refreshScript.includes("process.exitCode = 0")) fail("An unavailable JAS source must not produce a successful workflow result.");
 for (const workflow of [refreshWorkflow, pagesWorkflow]) {
   if (!workflow.includes("actions/configure-pages@v5")) fail("GitHub Pages configuration is missing.");
   if (!workflow.includes("actions/upload-pages-artifact@v4")) fail("GitHub Pages artifact upload is missing.");
@@ -86,6 +91,8 @@ for (const workflow of [refreshWorkflow, pagesWorkflow]) {
   if (!workflow.includes("actions/deploy-pages@v4")) fail("GitHub Pages deployment is missing.");
 }
 if (!netlify.includes('publish = "public"')) fail("Netlify publish directory is not configured.");
+if (jasCertificate.fingerprint256.replaceAll(":", "").toLowerCase() !== "b676ffa3179e8812093a1b5eafee876ae7a6aaf231078dad1bfb21cd2893764a") fail("The approved GlobalSign intermediate certificate has been altered.");
+if (!jasCertificate.subject.includes("CN=GlobalSign RSA OV SSL CA 2018")) fail("Unexpected JAS TLS intermediate certificate subject.");
 if (createHash("sha256").update(inocareLogo).digest("hex") !== "5199fb0cb19e6db4088ec1b9cc454ff1548360d3312e221d7dfac80517a414c1") fail("The supplied Klinik Inocare logo has been altered.");
 if (createHash("sha256").update(cellmaxLogo).digest("hex") !== "146f15b92674c4d3828490f71c04bb4787a92f717bb59010db1fa9c2d233ecca") fail("The supplied Cellmax logo has been altered.");
 

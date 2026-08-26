@@ -38,6 +38,10 @@ jobs:
 
       - name: Retrieve and validate the official JAS snapshot
         run: npm run refresh
+        env:
+          # JAS currently omits this GlobalSign intermediate from its TLS chain.
+          # Source: http://secure.globalsign.com/cacert/gsrsaovsslca2018.crt
+          NODE_EXTRA_CA_CERTS: certs/globalsign-rsa-ov-ssl-ca-2018.pem
 
       - name: Validate the dashboard package
         run: npm test
