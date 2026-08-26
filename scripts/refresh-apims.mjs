@@ -340,10 +340,10 @@ main().catch(async (error) => {
   if (error instanceof ApimsUnavailableError) {
     const cachedIsUsable = await cachedSnapshotIsUsable();
     if (cachedIsUsable) {
-      const message = "⚠️ JAS APIMS could not be reached after all retries. The last verified snapshot was preserved; no data file was changed and no Netlify deployment is required.";
-      console.warn(`${message}\n${error.message}`);
-      await writeWorkflowSummary(`## IPU refresh skipped\n\n${message}`);
-      process.exitCode = 0;
+      const message = "JAS APIMS could not be reached after all retries. The last verified snapshot was preserved, but the refresh failed so the outage remains visible in GitHub Actions.";
+      console.error(`${message}\n${error.message}`);
+      await writeWorkflowSummary(`## IPU refresh failed\n\n${message}`);
+      process.exitCode = 1;
       return;
     }
     console.error("JAS APIMS is unavailable and no complete verified cached snapshot exists. Refusing to publish.");
