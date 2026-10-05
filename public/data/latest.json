@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "ready",
-  "generatedAt": "2026-10-05T14:00:00+08:00",
+  "generatedAt": "2026-10-05T23:00:00+08:00",
   "source": {
     "name": "Jabatan Alam Sekitar — APIMS",
     "url": "https://eqms.doe.gov.my/APIMS/main",
@@ -9,9 +9,9 @@
     "fallbackUsed": false
   },
   "summary": {
-    "highestIpu": 153,
-    "highestStation": "Cheras",
-    "averageIpu": 99,
+    "highestIpu": 155,
+    "highestStation": "Nilai",
+    "averageIpu": 97,
     "unhealthyStations": 4,
     "monitoredStations": 17,
     "coveredRegions": 5
@@ -19,1156 +19,1156 @@
   "stateSummary": [
     {
       "region": "Selangor",
-      "highestIpu": 151,
+      "highestIpu": 94,
       "highestStation": "Johan Setia",
-      "category": "Tidak Sihat",
-      "averageIpu": 93,
+      "category": "Sederhana",
+      "averageIpu": 81,
       "stationCount": 6,
-      "unhealthyStations": 1
+      "unhealthyStations": 0
     },
     {
       "region": "W.P. Kuala Lumpur",
-      "highestIpu": 153,
+      "highestIpu": 152,
       "highestStation": "Cheras",
       "category": "Tidak Sihat",
-      "averageIpu": 125,
+      "averageIpu": 121,
       "stationCount": 2,
       "unhealthyStations": 1
     },
     {
       "region": "W.P. Putrajaya",
-      "highestIpu": 151,
+      "highestIpu": 152,
       "highestStation": "Putrajaya",
       "category": "Tidak Sihat",
-      "averageIpu": 151,
+      "averageIpu": 152,
       "stationCount": 1,
       "unhealthyStations": 1
     },
     {
       "region": "Perak",
-      "highestIpu": 92,
+      "highestIpu": 87,
       "highestStation": "Jalan Tasek, Ipoh",
       "category": "Sederhana",
-      "averageIpu": 80,
+      "averageIpu": 75,
       "stationCount": 5,
       "unhealthyStations": 0
     },
     {
       "region": "Negeri Sembilan",
-      "highestIpu": 141,
+      "highestIpu": 155,
       "highestStation": "Nilai",
       "category": "Tidak Sihat",
-      "averageIpu": 107,
+      "averageIpu": 129,
       "stationCount": 3,
-      "unhealthyStations": 1
+      "unhealthyStations": 2
     }
   ],
   "stationLatest": [
     {
-      "stationId": "CA16W",
-      "region": "W.P. Kuala Lumpur",
-      "station": "Cheras",
-      "ipu": 153,
+      "stationId": "CA23N",
+      "region": "Negeri Sembilan",
+      "station": "Nilai",
+      "ipu": 155,
       "category": "Tidak Sihat",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 1
     },
     {
-      "stationId": "MCAQM001",
-      "region": "Selangor",
-      "station": "Johan Setia",
-      "ipu": 151,
+      "stationId": "CA16W",
+      "region": "W.P. Kuala Lumpur",
+      "station": "Cheras",
+      "ipu": 152,
       "category": "Tidak Sihat",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 2
     },
     {
       "stationId": "CA17W",
       "region": "W.P. Putrajaya",
       "station": "Putrajaya",
-      "ipu": 151,
+      "ipu": 152,
       "category": "Tidak Sihat",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 3
-    },
-    {
-      "stationId": "CA23N",
-      "region": "Negeri Sembilan",
-      "station": "Nilai",
-      "ipu": 141,
-      "category": "Tidak Sihat",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 4
-    },
-    {
-      "stationId": "CA15W",
-      "region": "W.P. Kuala Lumpur",
-      "station": "Batu Muda",
-      "ipu": 97,
-      "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 5
     },
     {
       "stationId": "CA24N",
       "region": "Negeri Sembilan",
       "station": "Seremban",
-      "ipu": 93,
-      "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 6
+      "ipu": 147,
+      "category": "Tidak Sihat",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 4
     },
     {
-      "stationId": "CA20B",
+      "stationId": "MCAQM001",
       "region": "Selangor",
-      "station": "Shah Alam",
-      "ipu": 93,
+      "station": "Johan Setia",
+      "ipu": 94,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 7
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 5
+    },
+    {
+      "stationId": "CA15W",
+      "region": "W.P. Kuala Lumpur",
+      "station": "Batu Muda",
+      "ipu": 89,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 6
     },
     {
       "stationId": "CA11A",
       "region": "Perak",
       "station": "Jalan Tasek, Ipoh",
-      "ipu": 92,
+      "ipu": 87,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 8
-    },
-    {
-      "stationId": "CA25N",
-      "region": "Negeri Sembilan",
-      "station": "Port Dickson",
-      "ipu": 88,
-      "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 9
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 7
     },
     {
       "stationId": "CA22B",
       "region": "Selangor",
       "station": "Banting",
-      "ipu": 87,
+      "ipu": 86,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 10
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 8
     },
     {
-      "stationId": "CA12A",
-      "region": "Perak",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "ipu": 83,
-      "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 11
-    },
-    {
-      "stationId": "CA21B",
+      "stationId": "CA20B",
       "region": "Selangor",
-      "station": "Pelabuhan Klang",
-      "ipu": 81,
+      "station": "Shah Alam",
+      "ipu": 86,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 12
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 9
+    },
+    {
+      "stationId": "CA25N",
+      "region": "Negeri Sembilan",
+      "station": "Port Dickson",
+      "ipu": 84,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 10
     },
     {
       "stationId": "CA19B",
       "region": "Selangor",
       "station": "Petaling Jaya",
+      "ipu": 80,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 11
+    },
+    {
+      "stationId": "CA12A",
+      "region": "Perak",
+      "station": "S K Jalan Pegoh, Ipoh",
       "ipu": 79,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 12
+    },
+    {
+      "stationId": "CA21B",
+      "region": "Selangor",
+      "station": "Pelabuhan Klang",
+      "ipu": 76,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 13
     },
     {
       "stationId": "CA14A",
       "region": "Perak",
       "station": "Tanjung Malim",
-      "ipu": 79,
+      "ipu": 75,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 14
-    },
-    {
-      "stationId": "CA10A",
-      "region": "Perak",
-      "station": "Kg. Air Putih, Taiping",
-      "ipu": 73,
-      "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
-      "rank": 15
     },
     {
       "stationId": "CA13A",
       "region": "Perak",
       "station": "Seri Manjung",
-      "ipu": 72,
+      "ipu": 70,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
+      "rank": 15
+    },
+    {
+      "stationId": "CA10A",
+      "region": "Perak",
+      "station": "Kg. Air Putih, Taiping",
+      "ipu": 66,
+      "category": "Sederhana",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 16
     },
     {
       "stationId": "CA18B",
       "region": "Selangor",
       "station": "Kuala Selangor",
-      "ipu": 69,
+      "ipu": 65,
       "category": "Sederhana",
-      "sourceTimestamp": "2026-10-05T14:00:00+08:00",
+      "sourceTimestamp": "2026-10-05T23:00:00+08:00",
       "rank": 17
     }
   ],
   "stationTrend": [
     {
-      "timestamp": "2026-10-05T07:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Banting",
       "region": "Selangor",
-      "ipu": 88,
+      "ipu": 87,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T07:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Batu Muda",
       "region": "W.P. Kuala Lumpur",
-      "ipu": 99,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Cheras",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Jalan Tasek, Ipoh",
-      "region": "Perak",
-      "ipu": 89,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Johan Setia",
-      "region": "Selangor",
-      "ipu": 154,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Kg. Air Putih, Taiping",
-      "region": "Perak",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Kuala Selangor",
-      "region": "Selangor",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Nilai",
-      "region": "Negeri Sembilan",
-      "ipu": 124,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Pelabuhan Klang",
-      "region": "Selangor",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Petaling Jaya",
-      "region": "Selangor",
-      "ipu": 79,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 85,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 147,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "region": "Perak",
-      "ipu": 81,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Seremban",
-      "region": "Negeri Sembilan",
-      "ipu": 93,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Seri Manjung",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Shah Alam",
-      "region": "Selangor",
       "ipu": 95,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T07:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 79,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T08:00:00+08:00",
-      "station": "Banting",
-      "region": "Selangor",
-      "ipu": 88,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T08:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 98,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Cheras",
       "region": "W.P. Kuala Lumpur",
-      "ipu": 152,
+      "ipu": 154,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Jalan Tasek, Ipoh",
       "region": "Perak",
       "ipu": 90,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Johan Setia",
       "region": "Selangor",
-      "ipu": 154,
+      "ipu": 144,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Kg. Air Putih, Taiping",
       "region": "Perak",
       "ipu": 72,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Kuala Selangor",
       "region": "Selangor",
-      "ipu": 72,
+      "ipu": 66,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Nilai",
       "region": "Negeri Sembilan",
-      "ipu": 127,
+      "ipu": 152,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Pelabuhan Klang",
-      "region": "Selangor",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T08:00:00+08:00",
-      "station": "Petaling Jaya",
       "region": "Selangor",
       "ipu": 79,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 85,
+      "timestamp": "2026-10-05T16:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 80,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 88,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Putrajaya",
       "region": "W.P. Putrajaya",
-      "ipu": 151,
+      "ipu": 147,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "S K Jalan Pegoh, Ipoh",
       "region": "Perak",
       "ipu": 82,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Seremban",
       "region": "Negeri Sembilan",
-      "ipu": 93,
+      "ipu": 95,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Seri Manjung",
       "region": "Perak",
-      "ipu": 73,
+      "ipu": 71,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T08:00:00+08:00",
+      "timestamp": "2026-10-05T16:00:00+08:00",
       "station": "Shah Alam",
       "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T08:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 80,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Banting",
-      "region": "Selangor",
-      "ipu": 89,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 98,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Cheras",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Jalan Tasek, Ipoh",
-      "region": "Perak",
       "ipu": 91,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Johan Setia",
+      "timestamp": "2026-10-05T16:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 79,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Banting",
       "region": "Selangor",
-      "ipu": 153,
+      "ipu": 86,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 95,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Cheras",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 154,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Jalan Tasek, Ipoh",
+      "region": "Perak",
+      "ipu": 89,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Johan Setia",
+      "region": "Selangor",
+      "ipu": 131,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
       "station": "Kg. Air Putih, Taiping",
       "region": "Perak",
       "ipu": 71,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T17:00:00+08:00",
       "station": "Kuala Selangor",
       "region": "Selangor",
-      "ipu": 72,
+      "ipu": 64,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T17:00:00+08:00",
       "station": "Nilai",
       "region": "Negeri Sembilan",
-      "ipu": 129,
+      "ipu": 153,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T17:00:00+08:00",
       "station": "Pelabuhan Klang",
       "region": "Selangor",
-      "ipu": 84,
+      "ipu": 78,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T17:00:00+08:00",
       "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 81,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 87,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 151,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "S K Jalan Pegoh, Ipoh",
+      "region": "Perak",
+      "ipu": 80,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Seremban",
+      "region": "Negeri Sembilan",
+      "ipu": 98,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Seri Manjung",
+      "region": "Perak",
+      "ipu": 70,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Shah Alam",
+      "region": "Selangor",
+      "ipu": 90,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T17:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 78,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Banting",
+      "region": "Selangor",
+      "ipu": 86,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 93,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Cheras",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 155,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Jalan Tasek, Ipoh",
+      "region": "Perak",
+      "ipu": 87,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Johan Setia",
+      "region": "Selangor",
+      "ipu": 118,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Kg. Air Putih, Taiping",
+      "region": "Perak",
+      "ipu": 70,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Kuala Selangor",
+      "region": "Selangor",
+      "ipu": 64,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Nilai",
+      "region": "Negeri Sembilan",
+      "ipu": 153,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Pelabuhan Klang",
       "region": "Selangor",
       "ipu": 77,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 82,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 87,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 152,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "S K Jalan Pegoh, Ipoh",
+      "region": "Perak",
+      "ipu": 80,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Seremban",
+      "region": "Negeri Sembilan",
+      "ipu": 100,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Seri Manjung",
+      "region": "Perak",
+      "ipu": 68,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Shah Alam",
+      "region": "Selangor",
+      "ipu": 89,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T18:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 77,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Banting",
+      "region": "Selangor",
+      "ipu": 86,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 92,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Cheras",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 155,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Jalan Tasek, Ipoh",
+      "region": "Perak",
+      "ipu": 86,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Johan Setia",
+      "region": "Selangor",
+      "ipu": 106,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Kg. Air Putih, Taiping",
+      "region": "Perak",
+      "ipu": 69,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Kuala Selangor",
+      "region": "Selangor",
+      "ipu": 63,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Nilai",
+      "region": "Negeri Sembilan",
+      "ipu": 154,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Pelabuhan Klang",
+      "region": "Selangor",
+      "ipu": 76,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 82,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 86,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 152,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "S K Jalan Pegoh, Ipoh",
+      "region": "Perak",
+      "ipu": 79,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Seremban",
+      "region": "Negeri Sembilan",
+      "ipu": 115,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Seri Manjung",
+      "region": "Perak",
+      "ipu": 68,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Shah Alam",
+      "region": "Selangor",
+      "ipu": 89,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T19:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 76,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Banting",
+      "region": "Selangor",
+      "ipu": 85,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 92,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Cheras",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 154,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Jalan Tasek, Ipoh",
+      "region": "Perak",
+      "ipu": 85,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Johan Setia",
+      "region": "Selangor",
+      "ipu": 99,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Kg. Air Putih, Taiping",
+      "region": "Perak",
+      "ipu": 69,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Kuala Selangor",
+      "region": "Selangor",
+      "ipu": 63,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Nilai",
+      "region": "Negeri Sembilan",
+      "ipu": 154,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Pelabuhan Klang",
+      "region": "Selangor",
+      "ipu": 75,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 82,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Port Dickson",
       "region": "Negeri Sembilan",
       "ipu": 85,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 151,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "region": "Perak",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Seremban",
-      "region": "Negeri Sembilan",
-      "ipu": 92,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Seri Manjung",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Shah Alam",
-      "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T09:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 80,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Banting",
-      "region": "Selangor",
-      "ipu": 89,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 98,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Cheras",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Jalan Tasek, Ipoh",
-      "region": "Perak",
-      "ipu": 92,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Johan Setia",
-      "region": "Selangor",
-      "ipu": 153,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Kg. Air Putih, Taiping",
-      "region": "Perak",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Kuala Selangor",
-      "region": "Selangor",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Nilai",
-      "region": "Negeri Sembilan",
-      "ipu": 124,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Pelabuhan Klang",
-      "region": "Selangor",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Petaling Jaya",
-      "region": "Selangor",
-      "ipu": 77,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 86,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Putrajaya",
       "region": "W.P. Putrajaya",
       "ipu": 152,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T10:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "S K Jalan Pegoh, Ipoh",
       "region": "Perak",
-      "ipu": 83,
+      "ipu": 79,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T10:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Seremban",
       "region": "Negeri Sembilan",
-      "ipu": 92,
-      "category": "Sederhana"
+      "ipu": 128,
+      "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T10:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Seri Manjung",
       "region": "Perak",
-      "ipu": 73,
+      "ipu": 68,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T10:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Shah Alam",
-      "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T10:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 81,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Banting",
       "region": "Selangor",
       "ipu": 88,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 98,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Cheras",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 153,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Jalan Tasek, Ipoh",
-      "region": "Perak",
-      "ipu": 93,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Johan Setia",
-      "region": "Selangor",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Kg. Air Putih, Taiping",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Kuala Selangor",
-      "region": "Selangor",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Nilai",
-      "region": "Negeri Sembilan",
-      "ipu": 122,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Pelabuhan Klang",
-      "region": "Selangor",
-      "ipu": 84,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Petaling Jaya",
-      "region": "Selangor",
-      "ipu": 77,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 86,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "region": "Perak",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Seremban",
-      "region": "Negeri Sembilan",
-      "ipu": 92,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Seri Manjung",
-      "region": "Perak",
-      "ipu": 72,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
-      "station": "Shah Alam",
-      "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T11:00:00+08:00",
+      "timestamp": "2026-10-05T20:00:00+08:00",
       "station": "Tanjung Malim",
       "region": "Perak",
-      "ipu": 81,
+      "ipu": 75,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Banting",
       "region": "Selangor",
-      "ipu": 88,
+      "ipu": 85,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Batu Muda",
       "region": "W.P. Kuala Lumpur",
-      "ipu": 98,
+      "ipu": 90,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Cheras",
       "region": "W.P. Kuala Lumpur",
       "ipu": 153,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Jalan Tasek, Ipoh",
       "region": "Perak",
-      "ipu": 92,
+      "ipu": 85,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Johan Setia",
       "region": "Selangor",
-      "ipu": 152,
-      "category": "Tidak Sihat"
+      "ipu": 97,
+      "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Kg. Air Putih, Taiping",
       "region": "Perak",
-      "ipu": 72,
+      "ipu": 68,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Kuala Selangor",
       "region": "Selangor",
-      "ipu": 70,
+      "ipu": 65,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Nilai",
       "region": "Negeri Sembilan",
-      "ipu": 122,
+      "ipu": 154,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Pelabuhan Klang",
       "region": "Selangor",
-      "ipu": 83,
+      "ipu": 75,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T12:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Petaling Jaya",
-      "region": "Selangor",
-      "ipu": 78,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 86,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 151,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "region": "Perak",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Seremban",
-      "region": "Negeri Sembilan",
-      "ipu": 93,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Seri Manjung",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Shah Alam",
-      "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T12:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 80,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Banting",
-      "region": "Selangor",
-      "ipu": 87,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 96,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Cheras",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 153,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Jalan Tasek, Ipoh",
-      "region": "Perak",
-      "ipu": 92,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Johan Setia",
-      "region": "Selangor",
-      "ipu": 152,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Kg. Air Putih, Taiping",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Kuala Selangor",
-      "region": "Selangor",
-      "ipu": 70,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Nilai",
-      "region": "Negeri Sembilan",
-      "ipu": 131,
-      "category": "Tidak Sihat"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Pelabuhan Klang",
       "region": "Selangor",
       "ipu": 82,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Petaling Jaya",
-      "region": "Selangor",
+      "timestamp": "2026-10-05T21:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 85,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T21:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 152,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T21:00:00+08:00",
+      "station": "S K Jalan Pegoh, Ipoh",
+      "region": "Perak",
       "ipu": 78,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Port Dickson",
+      "timestamp": "2026-10-05T21:00:00+08:00",
+      "station": "Seremban",
       "region": "Negeri Sembilan",
-      "ipu": 87,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 151,
+      "ipu": 137,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "S K Jalan Pegoh, Ipoh",
-      "region": "Perak",
-      "ipu": 83,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Seremban",
-      "region": "Negeri Sembilan",
-      "ipu": 93,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Seri Manjung",
       "region": "Perak",
-      "ipu": 72,
+      "ipu": 69,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T13:00:00+08:00",
+      "timestamp": "2026-10-05T21:00:00+08:00",
       "station": "Shah Alam",
-      "region": "Selangor",
-      "ipu": 94,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T13:00:00+08:00",
-      "station": "Tanjung Malim",
-      "region": "Perak",
-      "ipu": 80,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Banting",
       "region": "Selangor",
       "ipu": 87,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Batu Muda",
-      "region": "W.P. Kuala Lumpur",
-      "ipu": 97,
+      "timestamp": "2026-10-05T21:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 75,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Banting",
+      "region": "Selangor",
+      "ipu": 85,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 90,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
       "station": "Cheras",
       "region": "W.P. Kuala Lumpur",
       "ipu": 153,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T22:00:00+08:00",
       "station": "Jalan Tasek, Ipoh",
       "region": "Perak",
-      "ipu": 92,
+      "ipu": 86,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T22:00:00+08:00",
       "station": "Johan Setia",
       "region": "Selangor",
-      "ipu": 151,
+      "ipu": 95,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Kg. Air Putih, Taiping",
+      "region": "Perak",
+      "ipu": 67,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Kuala Selangor",
+      "region": "Selangor",
+      "ipu": 65,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Nilai",
+      "region": "Negeri Sembilan",
+      "ipu": 155,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Kg. Air Putih, Taiping",
-      "region": "Perak",
-      "ipu": 73,
-      "category": "Sederhana"
-    },
-    {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Kuala Selangor",
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Pelabuhan Klang",
       "region": "Selangor",
-      "ipu": 69,
+      "ipu": 75,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Nilai",
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 80,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 84,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 152,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "S K Jalan Pegoh, Ipoh",
+      "region": "Perak",
+      "ipu": 79,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Seremban",
       "region": "Negeri Sembilan",
       "ipu": 141,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Pelabuhan Klang",
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Seri Manjung",
+      "region": "Perak",
+      "ipu": 69,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Shah Alam",
       "region": "Selangor",
-      "ipu": 81,
+      "ipu": 87,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Petaling Jaya",
+      "timestamp": "2026-10-05T22:00:00+08:00",
+      "station": "Tanjung Malim",
+      "region": "Perak",
+      "ipu": 75,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Banting",
       "region": "Selangor",
-      "ipu": 79,
+      "ipu": 86,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Port Dickson",
-      "region": "Negeri Sembilan",
-      "ipu": 88,
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Batu Muda",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 89,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
-      "station": "Putrajaya",
-      "region": "W.P. Putrajaya",
-      "ipu": 151,
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Cheras",
+      "region": "W.P. Kuala Lumpur",
+      "ipu": 152,
       "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Jalan Tasek, Ipoh",
+      "region": "Perak",
+      "ipu": 87,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Johan Setia",
+      "region": "Selangor",
+      "ipu": 94,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Kg. Air Putih, Taiping",
+      "region": "Perak",
+      "ipu": 66,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Kuala Selangor",
+      "region": "Selangor",
+      "ipu": 65,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Nilai",
+      "region": "Negeri Sembilan",
+      "ipu": 155,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Pelabuhan Klang",
+      "region": "Selangor",
+      "ipu": 76,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Petaling Jaya",
+      "region": "Selangor",
+      "ipu": 80,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Port Dickson",
+      "region": "Negeri Sembilan",
+      "ipu": 84,
+      "category": "Sederhana"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
+      "station": "Putrajaya",
+      "region": "W.P. Putrajaya",
+      "ipu": 152,
+      "category": "Tidak Sihat"
+    },
+    {
+      "timestamp": "2026-10-05T23:00:00+08:00",
       "station": "S K Jalan Pegoh, Ipoh",
       "region": "Perak",
-      "ipu": 83,
+      "ipu": 79,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T23:00:00+08:00",
       "station": "Seremban",
       "region": "Negeri Sembilan",
-      "ipu": 93,
-      "category": "Sederhana"
+      "ipu": 147,
+      "category": "Tidak Sihat"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T23:00:00+08:00",
       "station": "Seri Manjung",
       "region": "Perak",
-      "ipu": 72,
+      "ipu": 70,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T23:00:00+08:00",
       "station": "Shah Alam",
       "region": "Selangor",
-      "ipu": 93,
+      "ipu": 86,
       "category": "Sederhana"
     },
     {
-      "timestamp": "2026-10-05T14:00:00+08:00",
+      "timestamp": "2026-10-05T23:00:00+08:00",
       "station": "Tanjung Malim",
       "region": "Perak",
-      "ipu": 79,
+      "ipu": 75,
       "category": "Sederhana"
     }
   ],
